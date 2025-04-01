@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp, FaEnvelope } from "react-icons/fa"; 
+import { sendContactMessage } from "../services/sendMessage";
 import "../styles/Formulario.css";
 import { motion } from "framer-motion";
 
@@ -9,9 +10,20 @@ const Formulario: React.FC = () => {
     const [number, setNumber] = useState("");
     const [message, setMessage] = useState("");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log({ name, email, number, message });
+    
+        try {
+            await sendContactMessage({ name, email, number, message });
+            alert("Mensaje enviado correctamente 🚀");
+            setName("");
+            setEmail("");
+            setNumber("");
+            setMessage("");
+        } catch (error) {
+            console.error("Error en el envío del formulario:", error);
+            alert("Hubo un error al enviar el mensaje. Intentá de nuevo.");
+        }
     };
 
     const infoItems = [
