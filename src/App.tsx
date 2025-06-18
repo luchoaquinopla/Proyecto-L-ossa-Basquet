@@ -3,7 +3,7 @@ import Logo from "./components/Logo";
 import Formulario from "./components/Formulario";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Footer from "./components/Footer";
-import "./styles/app.css";
+import "./styles/App.css";
 
 const App: React.FC = () => {
   return (
