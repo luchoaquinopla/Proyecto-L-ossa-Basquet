@@ -2,15 +2,15 @@ import axiosInstance from "./axiosInstance";
 import axios from "axios";
 
 interface ContactData {
-  name: string;
+  nombre: string;
   email: string;
-  number: string;
-  message: string;
+  telefono: string;
+  mensaje: string;
 }
 
 export const sendContactMessage = async (data: ContactData) => {
   try {
-    const response = await axiosInstance.post("/contact", data);
+    const response = await axiosInstance.post("/contact/Lossa", data);
     return response.data;
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
